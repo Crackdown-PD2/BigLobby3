@@ -1399,7 +1399,7 @@
 			<param type="vector3" />               <!-- direction -->
 			<param type="int" min="0" max="1" />   <!-- Upgrade level of throw distance multiplier -->
 			<param type="unit" />                  <!-- If attach to zipline -->
-			<param type="int" min="0" max="15"/ >  <!-- peer_id -->
+			<param type="int" min="0" max="15" />  <!-- peer_id -->
 		</message>
 
 		<message name="sync_cocaine_stacks" delivery="ordered" receiver="unit">
@@ -1423,7 +1423,7 @@
 		</message>
 
 		<message name="request_throw_projectile" delivery="ordered" receiver="unit" check="client_to_server">
-			<param type="int" min="1" max="64"/ > <!-- Projectile type index -->
+			<param type="int" min="1" max="64" /> <!-- Projectile type index -->
 			<param type="vector3" />              <!-- position -->
 			<param type="vector3" exact="true" /> <!-- direction -->
 		</message>
@@ -1432,7 +1432,7 @@
 			<param type="unit" />
 			<param type="vector3" />              <!-- position -->
 			<param type="vector3" exact="true" /> <!-- direction -->
-			<param type="int" min="1" max="64"/ > <!-- Projectile type index -->
+			<param type="int" min="1" max="64" /> <!-- Projectile type index -->
 			<param type="int" min="0" max="15" /> <!-- Peer id -->
 		</message>
 
@@ -1444,7 +1444,7 @@
 			<param type="object3d" />             <!-- attach object -->
 			<param type="vector3" />              <!-- local position -->
 			<param type="vector3" />              <!-- direction -->
-			<param type="int" min="1" max="64"/ > <!-- Projectile type index -->
+			<param type="int" min="1" max="64" /> <!-- Projectile type index -->
 			<param type="int" min="0" max="15" /> <!-- Peer id -->
 		</message>
 
