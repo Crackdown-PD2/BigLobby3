@@ -1,15 +1,15 @@
 {
-	"name": "BigLobby",
+	"name": "RESTORATION MOD: Biglobby",
 	"description": "Increase the player limit of a lobby from the original 4.",
-	"author": "Polarathene",
+	"author": "Polarathene, test1, Znix, Restoration Mod team",
 	"contact": "no@support.com",
-	"version": "2.48",
+	"version": "3.00",
 	"blt_version": 2,
 	"priority" : 400,
 	"updates": [
 		{
-			"revision": 2.48,
-			"identifier": "bkin-biglobby"
+			"revision": 3.00,
+			"identifier": "resmod-biglobby"
 		}
 	],
 	"hooks": [
