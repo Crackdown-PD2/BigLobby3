@@ -133,3 +133,9 @@ function HUDManager:add_teammate_panel(character_name, player_name, ai, peer_id)
 	end
 	-- End Original Code --
 end
+
+function HUDManager:set_teammate_health(i, data)
+	if i and self._teammate_panels and self._teammate_panels[i] then
+		self._teammate_panels[i]:set_health(data)
+	end
+end
