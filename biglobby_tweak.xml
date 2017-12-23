@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <tweak name="settings/network" extension="network_settings">
     <search>
         <network/>
