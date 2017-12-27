@@ -24,9 +24,14 @@ function HostStateInGame:on_join_request_received(data, peer_name, client_prefer
 	elseif managers.groupai and not managers.groupai:state():chk_allow_drop_in() then
 		self:_send_request_denied(sender, 0, my_user_id)
 		return
+	--[[
 	elseif self:_is_kicked(data, peer_name, sender) then
 		print("YOU ARE IN MY KICKED LIST", peer_name)
 		self:_send_request_denied(sender, 2, my_user_id)
+		return
+	--]]
+	elseif self:_is_banned(peer_name, sender) then
+		self:_send_request_denied(sender, 9, my_user_id)
 		return
 	elseif peer_level < Global.game_settings.reputation_permission then
 		self:_send_request_denied(sender, 6, my_user_id)
@@ -40,6 +45,14 @@ function HostStateInGame:on_join_request_received(data, peer_name, client_prefer
 	elseif not managers.network:session():local_peer() then
 		self:_send_request_denied(sender, 0, my_user_id)
 		return
+	else
+		local user = Steam:user(sender:ip_at_index(0))
+
+		if not MenuCallbackHandler:is_modded_client() and not Global.game_settings.allow_modded_players and user and user:rich_presence("is_modded") == "1" then
+			self:_send_request_denied(sender, 10, my_user_id)
+
+			return
+		end
 	end
 	local old_peer = data.session:chk_peer_already_in(sender)
 	if old_peer then
@@ -115,7 +128,25 @@ function HostStateInGame:on_join_request_received(data, peer_name, client_prefer
 
 
 	-- Appears orginally, but is modified to include the num_player_slots parameter
-	new_peer:send("join_request_reply", 1, new_peer_id, character, level_index, difficulty_index, 2, data.local_peer:character(), my_user_id, Global.game_settings.mission, job_id_index, job_stage, alternative_job_stage, interupt_job_stage_level_index, server_xuid, ticket, BigLobbyGlobals:num_player_slots())
+	local params = {
+		1, 
+		new_peer_id, 
+		character, 
+		level_index, 
+		difficulty_index, 
+		2, 
+		data.local_peer:character(), 
+		my_user_id, 
+		Global.game_settings.mission, 
+		job_id_index, 
+		job_stage, 
+		alternative_job_stage, 
+		interupt_job_stage_level_index, 
+		server_xuid, 
+		ticket, 
+		BigLobbyGlobals:num_player_slots()
+	}
+	new_peer:send("join_request_reply", unpack(params))
 
 
 
@@ -128,5 +159,8 @@ function HostStateInGame:on_join_request_received(data, peer_name, client_prefer
 	managers.vote:sync_server_kick_option(new_peer)
 	data.session:send_ok_to_load_level()
 	self:on_handshake_confirmation(data, new_peer, 1)
+	new_peer:set_rank(peer_rank)
+
+	self._new_peers[new_peer_id] = true
 	-- End Original Code --
 end
