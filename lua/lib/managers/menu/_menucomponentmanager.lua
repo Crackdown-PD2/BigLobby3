@@ -22,7 +22,7 @@ end
 -- Shows the peer label over character with alpha of 1 if loaded, or 0.4 if still
 -- in a loading/joining state?
 function MenuComponentManager:show_contract_character(state)
-	orig__MenuComponentManager.create_contract_gui(self, state)
+	orig__MenuComponentManager.show_contract_character(self, state)
 
 	local num_player_slots = BigLobbyGlobals:num_player_slots()
 

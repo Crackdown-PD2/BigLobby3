@@ -10,6 +10,10 @@ local orig__ContractBoxGui = {
 function ContractBoxGui:create_contract_box()
 	orig__ContractBoxGui.create_contract_box(self)
 
+	if not managers.network:session() then
+		return
+	end
+	
 	local num_player_slots = BigLobbyGlobals:num_player_slots()
 
 	-- Only code changed was replacing hardcoded 4 with variable num_player_slots

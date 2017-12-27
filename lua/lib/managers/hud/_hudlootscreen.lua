@@ -7,7 +7,7 @@ HUDLootScreen._init_extra_peers = true
 function HUDLootScreen:set_num_visible(peers_num)
 	local num_player_slots = BigLobbyGlobals:num_player_slots()
 
-	if HUDLootScreen._init_extra_peers then
+	if HUDLootScreen._init_extra_peers or (table.getn(self._peer_data) == 4 and num_player_slots > 4) then
 		for i = 5, num_player_slots do
 			self:create_peer(self._peers_panel, i)
 		end
