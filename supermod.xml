@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <mod>
+	<:include src="hooks.xml" />
 	<!-- Use the tweak defined in game_name_tweak.xml - if you have a lot of these, you should probably put them in their own directory -->
 	<tweak definition="biglobby_tweak.xml" />
 </mod>

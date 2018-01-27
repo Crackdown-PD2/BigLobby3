@@ -2,9 +2,9 @@
 	"bkin_bl__menu__title"            : "BigLobby Options",
 	"bkin_bl__menu__desc"             : "Set the player size of your hosted lobbies.",
 	"bkin_bl__set_size__title"        : "Set max lobby size",
-	"bkin_bl__set_size__desc"         : "How many players do you want to allow in your lobby?",
+	"bkin_bl__set_size__desc"         : "How many players do you want to allow in your lobby?",
 	"bkin_bl__allow_more_bots__title" : "Allow more bots in lobby",
 	"bkin_bl__allow_more_bots__desc"  : "Allows additional bots up to the set lobby size.",
 	"bkin_bl__set_num_bots__title"    : "Set max bots",
-	"bkin_bl__set_num_bots__desc"     : "How many Team AI bots will you allow ingame?"
+	"bkin_bl__set_num_bots__desc"     : "How many Team AI bots will you allow ingame?"
 }
