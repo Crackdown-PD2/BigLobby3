@@ -24,6 +24,7 @@
 				<param type="string" />                <!-- My character -->
 				<param type="int" min="1" max="127" /> <!-- level index -->
 				<param type="int" min="1" max="8" />   <!-- difficulty index -->
+				<param type="bool" /> 				   <!-- one down modifier -->
 				<param type="int" min="0" max="4" />   <!-- Game State ~=0 when accepted, lobby, in game etc -->
 				<param type="string" />                <!-- Server character (it was Mask set) -->
 				<param type="string" />                <!-- Steam User ID (used for pc only) -->

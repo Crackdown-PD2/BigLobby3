@@ -134,6 +134,7 @@ function HostStateInGame:on_join_request_received(data, peer_name, client_prefer
 		character, 
 		level_index, 
 		difficulty_index, 
+		Global.game_settings.one_down,
 		2, 
 		data.local_peer:character(), 
 		my_user_id, 
