@@ -8,9 +8,8 @@ function ClientNetworkSession:on_join_request_reply(...)
 
 	-- Get params we want based on if the func signature is correct
 	local reply = params[1]
-	local sender = #params==17 and params[17] -- Should be the last param
-	--local num_players = sender and type(params[16])=='number' and params[16]
-	local num_players = sender and params[16]
+	local sender = #params==18 and params[18] -- last param should now be 18
+	local num_players = sender and type(params[17])=='number' and params[17] -- param 16 should now be 17
 
 	-- If the response is `1`(ok), set BigLobby to use host preference or 4 if
 	-- a regular lobby (num_players param is falsey).
@@ -24,7 +23,7 @@ function ClientNetworkSession:on_join_request_reply(...)
 	end
 
 	-- Assign sender to original param 16 for the original func call to use
-	if sender then params[16] = params[17] end
+	if sender then params[17] = params[18] end
 
 	-- Pass params on to the original call
 	orig__ClientNetworkSession.on_join_request_reply(self, unpack(params))
