@@ -6,5 +6,9 @@
 	"bkin_bl__allow_more_bots__title" : "Allow more bots in lobby",
 	"bkin_bl__allow_more_bots__desc"  : "Allows additional bots up to the set lobby size.",
 	"bkin_bl__set_num_bots__title"    : "Set max bots",
-	"bkin_bl__set_num_bots__desc"     : "How many Team AI bots will you allow ingame?"
+	"bkin_bl__set_num_bots__desc"     : "How many Team AI bots will you allow ingame?",
+	"bkin_bl__stop_all_bots__title"    : "Stop All Bots",
+	"bkin_bl__stop_all_bots__desc"     : "Allows you to stop bots following you in stealth",
+	"bkin_bl__release_all_bots__title"    : "Releases All Bots",
+	"bkin_bl__release_all_bots__desc"     : ""
 }
