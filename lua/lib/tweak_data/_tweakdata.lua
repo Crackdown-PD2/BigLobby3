@@ -130,3 +130,6 @@ tweak_data.preplanning_peer_colors = {}
 for i = 1, #tweak_data.peer_vector_colors do
 	tweak_data.preplanning_peer_colors[i] = Color(tweak_data.peer_vector_colors[i]:unpack())
 end
+
+tweak_data.team_ai.stop_action.distance = 10000000000000000
+
