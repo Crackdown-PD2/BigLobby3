@@ -11,25 +11,5 @@
 			"revision": 3.02,
 			"identifier": "resmod-biglobby"
 		}
-	],
-	"keybinds": [
-		{
-			"keybind_id": "bkin_bl__stop_all_bots__title",
-			"name": "bkin_bl__stop_all_bots__title",
-			"description": "bkin_bl__stop_all_bots__desc",
-			"script_path": "lua/_custom/stop.lua",
-			"run_in_menu": false,
-			"run_in_game": true,
-			"localized": true
-		},
-		{
-			"keybind_id": "bkin_bl__release_all_bots__title",
-			"name": "bkin_bl__release_all_bots__title",
-			"description": "bkin_bl__release_all_bots__desc",
-			"script_path": "lua/_custom/release.lua",
-			"run_in_menu": false,
-			"run_in_game": true,
-			"localized": true
-		}
 	]
 }

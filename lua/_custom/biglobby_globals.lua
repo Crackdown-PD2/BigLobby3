@@ -9,9 +9,10 @@ if not _G.BigLobbyGlobals then
 	_G.BigLobbyGlobals = {}
 
 	-- Settings affected by BigLobby Mod Options
-	BigLobbyGlobals.num_players_settings     = nil
-	BigLobbyGlobals.num_bots_settings        = nil
-	BigLobbyGlobals.allow_more_bots_settings = nil
+	BigLobbyGlobals.num_players_settings     	= nil
+	BigLobbyGlobals.num_bots_settings        	= nil
+	BigLobbyGlobals.allow_more_bots_settings 	= nil
+	BigLobbyGlobals.auto_stop_all_bots_settings = nil
 
 	-- Load custom lua files without specifying them in mod.txt --
 	BigLobbyGlobals.ModPath = ModPath
@@ -59,13 +60,13 @@ if not _G.BigLobbyGlobals then
 
 	-- Semantic versioning
 	function BigLobbyGlobals:version()
-		return "3.01"
+		return "3.02"
 	end
 
 
 	-- GameVersion for matchmaking, integer is expected
 	function BigLobbyGlobals:gameversion()
-		return 301
+		return 302
 	end
 
 
