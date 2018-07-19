@@ -12,15 +12,17 @@ function bkin_bl__menu:init()
 	-- the max values set in the pdmod file.
 	self._constants = {}
 	self._constants.MAX_SLOTS       = 128
-	self._constants.UNIQUE_HEISTERS = 16
+	self._constants.UNIQUE_HEISTERS = 21
 	self._data.lobby_size           = self._data.lobby_size      or self._constants.UNIQUE_HEISTERS
-	self._data.allow_more_bots      = self._data.allow_more_bots or true
+	self._data.allow_more_bots      = self._data.allow_more_bots
 	self._data.num_bots             = self._data.num_bots        or self._constants.UNIQUE_HEISTERS
+	self._data.auto_stop_all_bots   = self._data.auto_stop_all_bots
 
 	-- Apply 'settings' values to BigLobbyGlobals
-	BigLobbyGlobals.num_players_settings     = self._data.lobby_size
-	BigLobbyGlobals.allow_more_bots_settings = self._data.allow_more_bots
-	BigLobbyGlobals.num_bots_settings        = self._data.num_bots
+	BigLobbyGlobals.num_players_settings     	= self._data.lobby_size
+	BigLobbyGlobals.allow_more_bots_settings 	= self._data.allow_more_bots
+	BigLobbyGlobals.num_bots_settings        	= self._data.num_bots
+	BigLobbyGlobals.auto_stop_all_bots_settings = self._data.auto_stop_all_bots
 
 	-- Register the hooks for creating the option menu
 	self:RegisterHooks()
@@ -75,21 +77,31 @@ function bkin_bl__menu:RegisterHooks()
 		end
 
 		MenuCallbackHandler.bkin_bl__allow_more_bots__clbk = function(menu_clbk, item)
-			local allow = item:value()
+			local allow = ( item:value() == "on" and true or false )
 
 			item:set_value(allow)
-			self._data.allow_num_bots = allow
+			self._data.allow_more_bots = allow
 			BigLobbyGlobals.allow_more_bots_settings = allow
 
 			self:Save()
 		end
-
+		
 		MenuCallbackHandler.bkin_bl__set_num_bots__clbk = function(menu_clbk, item)
 			local num = math.floor( item:value() )
 
 			item:set_value(num)
 			self._data.num_bots = num
 			BigLobbyGlobals.num_bots_settings = num
+
+			self:Save()
+		end
+		
+		MenuCallbackHandler.bkin_bl__auto_stop_all_bots__clbk = function(menu_clbk, item)
+			local allow = ( item:value() == "on" and true or false )
+
+			item:set_value(allow)
+			self._data.auto_stop_all_bots = allow
+			BigLobbyGlobals.auto_stop_all_bots_settings = allow
 
 			self:Save()
 		end
@@ -105,7 +117,8 @@ function bkin_bl__menu:RegisterHooks()
 			max        = 128,
 			step       = 1,
 			show_value = true,
-			menu_id    = self.menu_id
+			menu_id    = self.menu_id,
+			priority   = 20
 		})
 
 		MenuHelper:AddToggle({
@@ -115,6 +128,7 @@ function bkin_bl__menu:RegisterHooks()
 			callback = "bkin_bl__allow_more_bots__clbk",
 			value    = self._data.allow_more_bots,
 			menu_id  = self.menu_id,
+			priority = 30
 		})
 
 		MenuHelper:AddSlider({
@@ -127,7 +141,61 @@ function bkin_bl__menu:RegisterHooks()
 			max        = 128,
 			step       = 1,
 			show_value = true,
-			menu_id    = self.menu_id
+			menu_id    = self.menu_id,
+			priority   = 10
+		})
+		
+		MenuHelper:AddToggle({
+			id       = "auto_stop_all_bots_toggle",
+			title    = "bkin_bl__auto_stop_all_bots__title",
+			desc     = "bkin_bl__auto_stop_all_bots__desc",
+			callback = "bkin_bl__auto_stop_all_bots__clbk",
+			value    = self._data.auto_stop_all_bots,
+			menu_id  = self.menu_id,
+			priority = 6
+		})
+		
+		local mod = BLT.Mods.GetModOwnerOfFile and BLT.Mods:GetModOwnerOfFile(BigLobbyGlobals.ModPath) or BLT.Mods.GetMod and BLT.Mods:GetMod("BigLobby3-master")
+		if not mod then
+			return
+		end
+		  
+		BLT.Keybinds:register_keybind(mod, { id = "bkin_bl__stop_all_bots", allow_game = true, show_in_menu = false, callback = function()
+			for _, ai in pairs(managers.groupai:state():all_AI_criminals()) do
+				ai.unit:movement():set_should_stay(true)
+			end
+		end })
+		local bind = BLT.Keybinds:get_keybind("bkin_bl__stop_all_bots")
+		local key = bind and bind:Key() or ""
+		  
+		MenuHelper:AddKeybinding({
+			id = "bkin_bl__stop_all_bots",
+			title = "bkin_bl__stop_all_bots__title",
+			desc= "bkin_bl__stop_all_bots__desc",
+			connection_name = "bkin_bl__stop_all_bots",
+			binding = key,
+			button = key,
+			menu_id = self.menu_id,
+			priority = 5
+		})
+		  
+		BLT.Keybinds:register_keybind(mod, { id = "bkin_bl__release_all_bots", allow_game = true, show_in_menu = false, callback = function()
+			for _, ai in pairs(managers.groupai:state():all_AI_criminals()) do
+				ai.unit:movement():set_should_stay(false)
+			end
+		end })
+		local bind = BLT.Keybinds:get_keybind("bkin_bl__release_all_bots")
+		local key = bind and bind:Key() or ""
+		  
+		MenuHelper:AddKeybinding({
+			id = "bkin_bl__release_all_bots",
+			title = "bkin_bl__release_all_bots__title",
+			desc= "bkin_bl__release_all_bots__desc",
+			connection_name = "bkin_bl__release_all_bots",
+			binding = key,
+			button = key,
+			menu_id = self.menu_id,
+			priority = 4
 		})
 	end)
 
