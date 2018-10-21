@@ -148,6 +148,11 @@
 				<param type="bool" />                   <!-- create body bag -->
 				<param type="int" min="1" max="128" />  <!-- peer_id -->
 			</message>
+			
+			<message name="biglobby__mission_ended" delivery="ordered" receiver="biglobby__unit" check="server_to_client">
+				<param type="bool" />	<!-- win -->
+				<param type="int" min="0" max="128" /> <!-- num_is_inside -->
+			</message>
 
 			<message name="biglobby__sync_trip_mine_setup" delivery="ordered" receiver="biglobby__unit" check="server_to_client">
 				<param type="unit" />
@@ -184,7 +189,7 @@
 
 			<message name="biglobby__sync_grenades" delivery="ordered" receiver="biglobby__unit">
 				<param type="string" />                <!-- Grenade id -->
-				<param type="int" min="0" max="31" />  <!-- Amount of grenades  -->
+				<param type="int" min="0" max="63" />  <!-- Amount of grenades  -->
 				<param type="int" min="0" max="128" /> <!-- Peer id -->
 			</message>
 
