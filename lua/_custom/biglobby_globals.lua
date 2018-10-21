@@ -97,6 +97,7 @@ if not _G.BigLobbyGlobals then
 	local unit_network_handler_funcs = {
 		'set_unit',
 		'remove_corpse_by_id',
+		'mission_ended',
 		'sync_trip_mine_setup',
 		'from_server_sentry_gun_place_result',
 		'sync_equipment_setup',
