@@ -152,6 +152,7 @@ function bkin_bl__menu:RegisterHooks()
 			callback = "bkin_bl__auto_stop_all_bots__clbk",
 			value    = self._data.auto_stop_all_bots,
 			menu_id  = self.menu_id,
+			value = true,
 			priority = 6
 		})
 		

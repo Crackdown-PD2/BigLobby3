@@ -19,6 +19,8 @@ Hooks:PostHook( GroupAIStateBase , "whisper_mode" , "GroupAIStateBasePostWhisper
 	for _, ai in pairs(managers.groupai:state():all_AI_criminals()) do
 	if self._whisper_mode == true and BigLobbyGlobals.auto_stop_all_bots_settings then
 		ai.unit:movement():set_should_stay(true)
+	elseif self._whisper_mode == false and BigLobbyGlobals.auto_stop_all_bots_settings then
+		ai.unit:movement():set_should_stay(false)
 	end
 	end
 end )
