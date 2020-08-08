@@ -168,6 +168,21 @@
 				<param type="int" min="1" max="2" />   <!-- spread upgrade level -->
 				<param type="bool" />                  <!-- shield -->
 				<param type="int" min="1" max="2" />   <!-- ammo upgrade level -->
+				<param type="int" min="1" max="2" />   <!-- fire mode index -->
+			</message>
+
+			<message name="biglobby__place_sentry_gun" delivery="ordered" receiver="biglobby__unit" check="client_to_server">
+				<param type="vector3" />
+				<param type="rotation" />
+				<param type="int" min="0" max="32"/> <!-- equipment selection index -->
+				<param type="unit" /> <!-- user_unit -->
+				<param type="int" min="1" max="2" /> <!-- idstring index for sentry type to spawn -->
+				<param type="int" min="1" max="2" />   <!-- ammo upgrade level -->
+				<param type="int" min="1" max="2" />   <!-- fire mode index -->
+			</message>
+
+			<message name="biglobby__picked_up_sentry_gun" delivery="ordered" receiver="biglobby__unit" check="client_to_server">
+				<param type="unit" /> <!-- user_unit -->
 			</message>
 
 			<message name="biglobby__sync_equipment_setup" delivery="ordered" receiver="biglobby__unit" check="server_to_client">

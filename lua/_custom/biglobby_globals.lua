@@ -100,6 +100,8 @@ if not _G.BigLobbyGlobals then
 		'mission_ended',
 		'sync_trip_mine_setup',
 		'from_server_sentry_gun_place_result',
+		'place_sentry_gun',
+		'picked_up_sentry_gun',
 		'sync_equipment_setup',
 		'sync_ammo_bag_setup',
 		'on_sole_criminal_respawned',
