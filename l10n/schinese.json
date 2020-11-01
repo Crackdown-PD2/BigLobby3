@@ -1,0 +1,16 @@
+{
+	"bkin_bl__menu__title"            		: "巨无霸大厅选项",
+	"bkin_bl__menu__desc"             		: "设置您主持的大厅人数大小。",
+	"bkin_bl__set_size__title"        		: "设置大厅大小",
+	"bkin_bl__set_size__desc"         		: "您想允许多少玩家进入您的大厅？",
+	"bkin_bl__allow_more_bots__title" 		: "允许更多人机",
+	"bkin_bl__allow_more_bots__desc"  		: "允许加入更多的人机，数量为您设定的大厅大小的余位。",
+	"bkin_bl__set_num_bots__title"    		: "最大人机数量",
+	"bkin_bl__set_num_bots__desc"     		: "在游戏内您想允许多少人机出现？",
+	"bkin_bl__stop_all_bots__title"    		: "暂停所有人机",
+	"bkin_bl__stop_all_bots__desc"     		: "允许您在潜入时命令人机不要跟随您。",
+	"bkin_bl__release_all_bots__title" 		: "释放所有人机",
+	"bkin_bl__release_all_bots__desc"  		: "释放所有被暂停的人机。",
+	"bkin_bl__auto_stop_all_bots__title"    : "潜入时自动暂停所有人机",
+	"bkin_bl__auto_stop_all_bots__desc"     : "在潜入时自动允许人机不再跟随您。"
+}

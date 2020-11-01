@@ -54,7 +54,20 @@ end
 
 function bkin_bl__menu:RegisterHooks()
 	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit__bkin_bl", function( loc )
-		loc:load_localization_file(BigLobbyGlobals.ModPath .. "l10n/en.json")
+		if not language_filename then
+			for _, filename in pairs(file.GetFiles(BigLobbyGlobals.ModPath .. 'l10n/')) do
+				local str = filename:match('^(.*).json$')
+				if str and Idstring(str) and Idstring(str):key() == SystemInfo:language():key() then
+					language_filename = filename
+					break
+				end
+			end
+		end
+
+		if language_filename then
+			loc:load_localization_file(BigLobbyGlobals.ModPath .. 'l10n/' .. language_filename)
+		end
+		loc:load_localization_file(BigLobbyGlobals.ModPath .. "l10n/english.json")
 	end)
 
 
