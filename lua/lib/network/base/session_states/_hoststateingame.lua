@@ -1,6 +1,6 @@
 -- Unfortunately no clean way to modify this bit of code, so I have to include the
 -- original code with modified, could cause problems with other mods that would want to touch this function
-function HostStateInGame:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, peer_rank, gameversion, join_attempt_identifier, auth_ticket, sender)
+function HostStateInGame:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender)
 	
 	local num_player_slots = BigLobbyGlobals:num_player_slots() - 1
 	
@@ -167,6 +167,7 @@ function HostStateInGame:on_join_request_received(data, peer_name, client_prefer
 	data.session:send_ok_to_load_level()
 	self:on_handshake_confirmation(data, new_peer, 1)
 	new_peer:set_rank(peer_rank)
+	new_peer:set_join_stinger_index(peer_stinger_index)
 
 	self._new_peers[new_peer_id] = true
 	-- End Original Code --

@@ -1,6 +1,6 @@
 -- Unfortunately no clean way to modify this bit of code, so I have to include the
 -- original code with modified, could cause problems with other mods that would want to touch this function
-function HostStateInLobby:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, peer_rank, gameversion, join_attempt_identifier, auth_ticket, sender)
+function HostStateInLobby:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender)
 	
 	-- Number of players allowed to join the game(excluding the host)
 	local num_player_slots = BigLobbyGlobals:num_player_slots() - 1
@@ -172,14 +172,8 @@ function HostStateInLobby:on_join_request_received(data, peer_name, client_prefe
 	self:_introduce_old_peers_to_new_peer(data, new_peer)
 	self:on_handshake_confirmation(data, new_peer, 1)
 	managers.network:session():local_peer():sync_lobby_data(new_peer)
-
-	if peer_rank > 0 then
-		managers.menu:post_event("infamous_player_join_stinger")
-	else
-		managers.menu:post_event("player_join")
-	end
-
-	managers.network:session():send_to_peers_except(new_peer_id, "peer_joined_sound", peer_rank > 0)
+	managers.menu:play_join_stinger_by_index(peer_stinger_index)
+	managers.network:session():send_to_peers_except(new_peer_id, "peer_joined_sound", peer_stinger_index)
 	managers.crime_spree:on_peer_finished_loading(new_peer)
 	-- End Original Code --
 end
