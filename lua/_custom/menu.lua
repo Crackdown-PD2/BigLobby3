@@ -13,9 +13,9 @@ function bkin_bl__menu:init()
 	self._constants = {}
 	self._constants.MAX_SLOTS       = 128
 	self._constants.UNIQUE_HEISTERS = 21
-	self._data.lobby_size           = self._data.lobby_size      or self._constants.UNIQUE_HEISTERS
+	self._data.lobby_size           = self._data.lobby_size - 1 or self._constants.UNIQUE_HEISTERS
 	self._data.allow_more_bots      = self._data.allow_more_bots
-	self._data.num_bots             = self._data.num_bots        or self._constants.UNIQUE_HEISTERS
+	self._data.num_bots             = self._data.num_bots - 1 or self._constants.UNIQUE_HEISTERS
 	self._data.auto_stop_all_bots   = self._data.auto_stop_all_bots
 
 	-- Apply 'settings' values to BigLobbyGlobals
@@ -165,7 +165,6 @@ function bkin_bl__menu:RegisterHooks()
 			callback = "bkin_bl__auto_stop_all_bots__clbk",
 			value    = self._data.auto_stop_all_bots,
 			menu_id  = self.menu_id,
-			value = true,
 			priority = 6
 		})
 		
