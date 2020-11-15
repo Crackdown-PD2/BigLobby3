@@ -25,7 +25,7 @@ Hooks:PostHook( GroupAIStateBase , "whisper_mode" , "GroupAIStateBasePostWhisper
 				type = "idle"
 			})
 		else
-			ai.unit:movement():set_should_stay(false)
+			return
 		end
 	end
 end )
