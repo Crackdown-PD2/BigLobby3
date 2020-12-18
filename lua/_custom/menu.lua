@@ -1,6 +1,6 @@
 bkin_bl__menu = bkin_bl__menu or class()
 bkin_bl__menu.menu_id = "bkin_bl__menu"
-bkin_bl__menu._data_path = BigLobbyGlobals.SavePath .. "bkin_bl__settings.json"
+bkin_bl__menu._data_path = BigLobbyGlobals.SavePath .. "big_lobby_new.json"
 bkin_bl__menu._data = bkin_bl__menu._data or {}
 
 
@@ -9,14 +9,14 @@ function bkin_bl__menu:init()
 	self:Load()
 
 	-- The new player limit is defined here, it should not be greater than
-	-- the max values set in the pdmod file.
+	-- the max values set in the network setting file.
 	self._constants = {}
 	self._constants.MAX_SLOTS       = 128
 	self._constants.UNIQUE_HEISTERS = 21
-	self._data.lobby_size           = self._data.lobby_size - 1 or self._constants.UNIQUE_HEISTERS
+	self._data.lobby_size           = self._data.lobby_size or 22
 	self._data.allow_more_bots      = self._data.allow_more_bots
-	self._data.num_bots             = self._data.num_bots - 1 or self._constants.UNIQUE_HEISTERS
-	self._data.auto_stop_all_bots   = self._data.auto_stop_all_bots
+	self._data.num_bots             = self._data.num_bots or self._constants.UNIQUE_HEISTERS
+	self._data.auto_stop_all_bots   = self._data.auto_stop_all_bots or true
 
 	-- Apply 'settings' values to BigLobbyGlobals
 	BigLobbyGlobals.num_players_settings     	= self._data.lobby_size
@@ -127,7 +127,7 @@ function bkin_bl__menu:RegisterHooks()
 			callback   = "bkin_bl__set_size__clbk",
 			value      = self._data.lobby_size,
 			min        = 4,
-			max        = 128,
+			max        = 22,
 			step       = 1,
 			show_value = true,
 			menu_id    = self.menu_id,
@@ -151,7 +151,7 @@ function bkin_bl__menu:RegisterHooks()
 			callback   = "bkin_bl__set_num_bots__clbk",
 			value      = self._data.num_bots,
 			min        = 3,
-			max        = 128,
+			max        = 21,
 			step       = 1,
 			show_value = true,
 			menu_id    = self.menu_id,

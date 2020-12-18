@@ -3,7 +3,7 @@
 	"description": "Increase the player limit of a lobby from the original 4.",
 	"author": "Polarathene, test1, Znix, Restoration Mod team",
 	"contact": "no@support.com",
-	"version": "3.24.2",
+	"version": "3.25",
 	"blt_version": 2,
 	"priority" : 400,
 	"updates": [
