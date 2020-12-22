@@ -36,13 +36,15 @@ end
 
 
 -- Modified to support additional players. Seems to just reduce font size when needed?
-function TeamLoadoutItem:reduce_to_small_font()
+function TeamLoadoutItem:reduce_to_small_font(iteration)
+	TeamLoadoutItem.super.reduce_to_small_font(self, iteration)
+
 	local num_player_slots = BigLobbyGlobals:num_player_slots()
 
 	-- Only code changed was replacing hardcoded 4 with variable num_player_slots
 	TeamLoadoutItem.super.reduce_to_small_font(self)
 	for i = 1, num_player_slots do
-		if self._player_slots[i].box then
+		if self._player_slots and self._player_slots[i].box then
 			self._player_slots[i].box:create_sides(self._player_slots[i].panel, {
 				sides = {
 					1,
