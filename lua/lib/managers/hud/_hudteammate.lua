@@ -6,7 +6,7 @@ local orig__HUDTeammate = {
 	init = HUDTeammate.init
 }
 
-
+if BL2Options then return end
 function HUDTeammate:init(i, teammates_panel, is_player, width)
 	-- Main difference in this function is based on the `main_player` variable
 	-- This refers to the local/client player, so as long as we can make that

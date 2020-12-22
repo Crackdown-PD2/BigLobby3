@@ -2,7 +2,7 @@
 -- Otherwise known as the local players UI panel.
 -- By updating this value, we keep that consistency that the player is used to.
 HUDManager.PLAYER_PANEL = BigLobbyGlobals:num_player_slots()
-
+if BL2Options then return end
 --Nothing seems to call this, I don't think it's even used.. Panels are created somewhere else
 function HUDManager:_create_teammates_panel(hud)
 	hud = hud or managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
