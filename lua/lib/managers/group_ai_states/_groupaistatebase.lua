@@ -30,11 +30,11 @@ Hooks:PostHook( GroupAIStateBase , "whisper_mode" , "GroupAIStateBasePostWhisper
 		if self._whisper_mode == true and Network:is_server() then
 			ai.unit:movement():play_redirect("crouch")
 			ai.unit:movement():action_request({
-				sync = true,
+				align_sync = true,
 				body_part = 1,
 				type = "idle"
 			})
-		elseif self._whisper_mode == false and Network:is_server() then
+		else
 			return
 		end
 	end
