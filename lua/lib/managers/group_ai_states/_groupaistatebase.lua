@@ -20,7 +20,9 @@ Hooks:PostHook( GroupAIStateBase , "whisper_mode" , "GroupAIStateBasePostWhisper
 		if self._whisper_mode == true and BigLobbyGlobals.auto_stop_all_bots_settings then
 			ai.unit:movement():set_should_stay(true)
 		elseif self._whisper_mode == false and BigLobbyGlobals.auto_stop_all_bots_settings then
-			ai.unit:movement():set_should_stay(false)
+			if ai.unit:movement() and ai.unit:movement()._should_stay then
+				ai.unit:movement():set_should_stay(false)
+			end
 		end
 	end
 end )
