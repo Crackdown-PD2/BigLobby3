@@ -158,15 +158,15 @@ function bkin_bl__menu:RegisterHooks()
 			priority   = 10
 		})
 		
-		MenuHelper:AddToggle({
-			id       = "auto_stop_all_bots_toggle",
-			title    = "bkin_bl__auto_stop_all_bots__title",
-			desc     = "bkin_bl__auto_stop_all_bots__desc",
-			callback = "bkin_bl__auto_stop_all_bots__clbk",
-			value    = self._data.auto_stop_all_bots,
-			menu_id  = self.menu_id,
-			priority = 6
-		})
+		-- MenuHelper:AddToggle({
+		-- 	id       = "auto_stop_all_bots_toggle",
+		-- 	title    = "bkin_bl__auto_stop_all_bots__title",
+		-- 	desc     = "bkin_bl__auto_stop_all_bots__desc",
+		-- 	callback = "bkin_bl__auto_stop_all_bots__clbk",
+		-- 	value    = self._data.auto_stop_all_bots,
+		-- 	menu_id  = self.menu_id,
+		-- 	priority = 6
+		-- })
 		
 		local mod = BLT.Mods.GetModOwnerOfFile and BLT.Mods:GetModOwnerOfFile(BigLobbyGlobals.ModPath) or BLT.Mods.GetMod and BLT.Mods:GetMod("BigLobby3-master")
 		if not mod then
