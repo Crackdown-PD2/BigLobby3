@@ -13,7 +13,7 @@ function AchievmentManager:disable_achievements()
 	-- be able to unlock achievements while not in a game and have the mod enabled
 	local m_session = managers.network:session()
 
-	local isRegularAmount = m_session and (m_session:amount_of_players() <= 4)
+	local isRegularAmount = m_session and (m_session:amount_of_players() > 4)
 	local isRegularSize   = m_session and BigLobbyGlobals:is_small_lobby()
 
 	return isRegularAmount or isRegularSize
