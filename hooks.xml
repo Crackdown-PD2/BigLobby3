@@ -42,7 +42,10 @@
 	<post script_path="lua/lib/network/base/_networkmanager.lua" hook_id="lib/network/base/networkmanager"/>
 	<post script_path="lua/lib/network/base/_networkpeer.lua" hook_id="lib/network/base/networkpeer"/>
 	<post script_path="lua/lib/network/handlers/_unitnetworkhandler.lua" hook_id="lib/network/handlers/unitnetworkhandler"/>
+
+	<!-- Matchmaking -->
 	<post script_path="lua/lib/network/matchmaking/_networkmatchmakingsteam.lua" hook_id="lib/network/matchmaking/networkmatchmakingsteam"/>
+	<post script_path="lua/lib/network/matchmaking/_networkmatchmakingepic.lua" hook_id="lib/network/matchmaking/networkmatchmakingepic"/>
 	
 	<post script_path="lua/lib/tweak_data/_moneytweakdata.lua" hook_id="lib/tweak_data/moneytweakdata"/>
 	<post script_path="lua/lib/tweak_data/_tweakdata.lua" hook_id="lib/tweak_data/tweakdata"/>
