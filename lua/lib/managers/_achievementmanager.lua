@@ -4,7 +4,9 @@ local orig__AchievmentManager = {
 	_give_reward        = AchievmentManager._give_reward,
 	award_progress      = AchievmentManager.award_progress,
 	award_steam         = AchievmentManager.award_steam,
-	steam_unlock_result = AchievmentManager.steam_unlock_result
+	steam_unlock_result = AchievmentManager.steam_unlock_result,
+	award_epic			= AchievmentManager.award_epic,
+	epic_unlock_result	= AchievmentManager.epic_unlock_result
 }
 
 
@@ -53,5 +55,17 @@ end
 function AchievmentManager.steam_unlock_result(...)
 	if not AchievmentManager:disable_achievements() then
 		orig__AchievmentManager.steam_unlock_result(...)
+	end
+end
+
+function AchievmentManager:award_epic(...)
+	if not self:disable_achievements() then
+		orig__AchievmentManager.award_epic(...)
+	end
+end
+
+function AchievmentManager.epic_unlock_result(...)
+	if not self:disable_achievements() then
+		orig__AchievmentManager.epic_unlock_result(...)
 	end
 end
