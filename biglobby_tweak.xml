@@ -19,34 +19,35 @@
 			</message>
 
 			<message name="biglobby__join_request_reply" delivery="ordered" receiver="biglobby__connection">
-				<param type="int" min="0" max="15" />  <!-- Reply info 0 == may not join, 1 == ok, 2 == kicked, 3 == game started, 4 = map not owned, 5 = full, 6 = low lvl, 7 = wrong game version, 8 = authentication failed, 9 = banned, 10 == modded -->
 				<param type="int" min="0" max="128" /> <!-- Peer id ~=0 when accepted -->
-				<param type="string" />                <!-- My character -->
-				<param type="int" min="1" max="127" /> <!-- level index -->
-				<param type="int" min="1" max="8" />   <!-- difficulty index -->
-				<param type="bool" /> 				   <!-- one down modifier -->
-				<param type="int" min="0" max="4" />   <!-- Game State ~=0 when accepted, lobby, in game etc -->
-				<param type="string" />                <!-- Server character (it was Mask set) -->
-				<param type="string" />                <!-- Steam User ID (used for pc only) -->
-				<param type="string" />                <!-- Mission -->
-				<param type="int" min="0" max="127" /> <!-- Job id index -->
-				<param type="int" min="0" max="12" />  <!-- Job stage -->
-				<param type="int" min="0" max="4" />   <!-- alternative stage -->
-				<param type="int" min="0" max="127" /> <!-- interupt stage level index -->
+				<param type="string" />				<!-- My character -->
+				<param type="int" min="1" max="255" /> <!-- level index -->
+				<param type="int" min="1" max="8" /> <!-- difficulty index -->
+				<param type="bool" /> <!-- one down modifier -->
+				<param type="int" min="0" max="4" /> <!-- Game State ~=0 when accepted, lobby, in game etc -->
+				<param type="string" /> <!-- Server character (it was Mask set) -->
+				<param type="string" /> <!-- Steam User ID (used for pc only) -->
+				<param type="string" /> <!-- Mission -->
+				<param type="int" min="0" max="255" /> <!-- Job id index -->
+				<param type="int" min="0" max="12" /> <!-- Job stage -->
+				<param type="int" min="0" max="4" /> <!-- alternative stage -->
+				<param type="int" min="0" max="255" /> <!-- interupt stage level index -->
 				<param type="xuid" />
-				<param type="longstring" />            <!-- Authentic Steam Ticket ID -->
+				<param type="longstring" /> <!-- Authentic Steam Ticket ID -->
 				<param type="int" min="4" max="128" /> <!-- BigLobby host `num_players` setting -->
 			</message>
 
 			<message name="biglobby__peer_handshake" delivery="ordered" receiver="biglobby__connection" check="server_to_client">
-				<param type="string" />                <!-- Peer Name -->
+				<param type="string" /> <!-- Peer Name -->
 				<param type="int" min="1" max="128" /> <!-- Peer id -->
-				<param type="string" />                <!-- Peer User_ID -->
-				<param type="bool" />                  <!-- In lobby -->
-				<param type="bool" />                  <!-- Loading -->
-				<param type="bool" />                  <!-- Synched -->
-				<param type="string" />                <!-- Character -->
-				<param type="string" />                <!-- Mask set -->
+				<param type="string" /> <!-- Peer User_ID -->
+				<param type="string" /> <!-- Peer Account type -->
+				<param type="string" /> <!-- Peer Account Id -->
+				<param type="bool" /> <!-- In lobby -->
+				<param type="bool" /> <!-- Loading -->
+				<param type="bool" /> <!-- Synched -->
+				<param type="string" /> <!-- Character -->
+				<param type="string" /> <!-- Mask set -->
 				<param type="xuid" />
 				<param type="xnaddr" />
 			</message>
@@ -136,11 +137,12 @@
 		<rpc>
 			<message name="biglobby__set_unit" delivery="ordered" receiver="biglobby__unit" check="server_to_client">
 				<param type="unit" />
-				<param type="string" />                <!-- character name -->
-				<param type="longstring" />            <!-- outfit_string -->
+				<param type="string" />	<!-- character name -->
+				<param type="longstring" />	<!-- outfit_string -->
 				<param type="int" min="0" max="100" /> <!-- outfit_version -->
 				<param type="int" min="0" max="128" /> <!-- Peer id. 0 means its an AI -->
-				<param type="string" />                <!-- team_id string -->
+				<param type="string" />	<!-- team_id string -->
+				<param type="int" min="0" max="32767" /> <!-- random seed -->
 			</message>
 
 			<message name="biglobby__remove_corpse_by_id" delivery="ordered" receiver="biglobby__unit" check="server_to_client">
@@ -224,21 +226,21 @@
 
 			<message name="biglobby__sync_throw_projectile" delivery="ordered" receiver="biglobby__unit">
 				<param type="unit" />
-				<param type="vector3" />               <!-- position -->
-				<param type="vector3" />               <!-- direction -->
-				<param type="int" min="1" max="64" />  <!-- Projectile type index -->
+				<param type="vector3" /> <!-- position -->
+				<param type="vector3" exact="true" /> <!-- direction -->
+				<param type="int" min="1" max="128"/> <!-- Projectile type index -->
 				<param type="int" min="0" max="128" /> <!-- Peer id -->
 			</message>
 
 			<message name="biglobby__sync_attach_projectile" delivery="ordered" receiver="biglobby__unit">
-				<param type="unit" />                  <!-- projectile unit -->
-				<param type="bool" />                  <!-- Instant dynamic pickup -->
-				<param type="unit" />                  <!-- attach to unit -->
-				<param type="body" />                  <!-- attach to body -->
-				<param type="object3d" />              <!-- attach object -->
-				<param type="vector3" />               <!-- local position -->
-				<param type="vector3" />               <!-- direction -->
-				<param type="int" min="1" max="64" />  <!-- Projectile type index -->
+				<param type="unit" />		<!-- projectile unit -->
+				<param type="bool" />		<!-- Instant dynamic pickup -->
+				<param type="unit" />		<!-- attach to unit -->
+				<param type="body" />		<!-- attach to body -->
+				<param type="object3d" />	<!-- attach object -->
+				<param type="vector3" />	<!-- local position -->
+				<param type="vector3" />	<!-- direction -->
+				<param type="int" min="1" max="128"/> <!-- Projectile type index -->
 				<param type="int" min="0" max="128" /> <!-- Peer id -->
 			</message>
 
@@ -289,12 +291,10 @@
 				<param type="int" min="0" max="255" /> <!-- suspicion ratio. 0 means no suspicion, 255 means uncovered. values in between mean suspicion in progress -->
 			</message>
 
-			<message name="biglobby__sync_enter_vehicle_host" delivery="ordered" receiver="biglobby__unit">
-				<param type="unit" />                  <!-- the vehicle -->
-				<param type="string" />                <!-- seat -->
-				<param type="int" min="0" max="128" /> <!-- Peer id ~=0 when accepted -->
-				<param type="unit" />                  <!-- player -->
-			</message>
+			<message name="biglobby__sync_enter_vehicle_host" delivery="ordered" receiver="biglobby__unit" check="client_to_server">
+				<param type="unit" /> <!-- the vehicle -->
+				<param type="string" /> <!-- seat -->
+			 </message>
 
 			<message name="biglobby__sync_vehicle_player" delivery="ordered" receiver="biglobby__unit">
 				<param type="string" />                <!-- action (enter/exit) -->
@@ -322,8 +322,7 @@
 			</message>
 
 			<message name="biglobby__sync_vehicle_interact_trunk" delivery="ordered" receiver="biglobby__unit">
-				<param type="unit" />                  <!-- vehicle -->
-				<param type="int" min="1" max="128" /> <!-- peer_id -->
+				<param type="unit"/>	<!-- vehicle -->
 			</message>
 
 			<message name="biglobby__sync_crime_spree_level" receiver="biglobby__connection" delivery="ordered">
