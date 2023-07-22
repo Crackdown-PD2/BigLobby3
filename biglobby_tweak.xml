@@ -19,6 +19,7 @@
 			</message>
 
 			<message name="biglobby__join_request_reply" delivery="ordered" receiver="biglobby__connection">
+				<param type="int" min="0" max="15" />
 				<param type="int" min="0" max="128" /> <!-- Peer id ~=0 when accepted -->
 				<param type="string" />				<!-- My character -->
 				<param type="int" min="1" max="255" /> <!-- level index -->
