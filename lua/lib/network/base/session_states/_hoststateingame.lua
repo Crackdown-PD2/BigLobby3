@@ -1,7 +1,7 @@
 -- Unfortunately no clean way to modify this bit of code, so I have to include the
 -- original code with modified, could cause problems with other mods that would want to touch this function
 
-function HostStateInGame:on_join_request_received(data, peer_name, peer_account_type_str, peer_account_id, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender)
+function HostStateInGame:on_join_request_received(data, peer_name, peer_account_type_str, peer_account_id, is_invite, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender)
 
 	-- Number of players allowed to join the game(excluding the host)
 	local num_player_slots = BigLobbyGlobals:num_player_slots() - 1

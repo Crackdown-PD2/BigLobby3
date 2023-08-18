@@ -1,11 +1,11 @@
 -- Unfortunately no clean way to modify this bit of code, so I have to include the
 -- original code with modified, could cause problems with other mods that would want to touch this function
-function HostStateInLobby:on_join_request_received(data, peer_name, peer_account_type_str, peer_account_id, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender)
-	print("[HostStateInLobby:on_join_request_received]", data, peer_name, peer_account_type_str, peer_account_id, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender:ip_at_index(0))
+function HostStateInLobby:on_join_request_received(data, peer_name, peer_account_type_str, peer_account_id, is_invite, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender)
+	print("[HostStateInLobby:on_join_request_received]", data, peer_name, peer_account_type_str, peer_account_id, is_invite, client_preferred_character, dlcs, xuid, peer_level, peer_rank, peer_stinger_index, gameversion, join_attempt_identifier, auth_ticket, sender:ip_at_index(0))
 
 	-- Number of players allowed to join the game(excluding the host)
 	local num_player_slots = BigLobbyGlobals:num_player_slots() - 1
-	
+
 	-- Original Code --
 	local peer_id = sender:ip_at_index(0)
 	local drop_in_name = peer_name
@@ -32,7 +32,7 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 		return
 	end
 
-	if managers.network.matchmake:get_lobby_type() == "friend" then
+	if not is_invite and managers.network.matchmake:get_lobby_type() == "friend" then
 		print("[HostStateInLobby:on_join_request_received] lobby type friend only, check if friend")
 
 		if SocialHubFriends:is_friend_global(peer_id, peer_account_type_str, peer_account_id) then
@@ -185,7 +185,7 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 
 	local server_xuid = (SystemInfo:platform() == Idstring("X360") or SystemInfo:platform() == Idstring("XB1")) and managers.network.account:player_id() or ""
 	-- End Original Code --
-	
+
 	-- Appears orginally, but is modified to include the num_player_slots parameter
 	local params = {
 		1,
@@ -208,7 +208,7 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 	}
 
 	new_peer:send("join_request_reply", unpack(params))
-	
+
 	-- Original Code --
 	new_peer:send("set_loading_state", false, data.session:load_counter())
 
