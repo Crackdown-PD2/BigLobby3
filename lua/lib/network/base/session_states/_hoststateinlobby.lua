@@ -116,7 +116,6 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 	if table.size(data.peers) >= num_player_slots then
 		print("server is full")
 		self:_send_request_denied(sender, 5, my_user_id)
-
 		return
 	end
 
@@ -182,9 +181,9 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 		local interupt_stage_level = managers.job:interupt_stage()
 		interupt_job_stage_level_index = interupt_stage_level and tweak_data.levels:get_index_from_level_id(interupt_stage_level) or 0
 	end
+	-- End Original Code --
 
 	local server_xuid = (SystemInfo:platform() == Idstring("X360") or SystemInfo:platform() == Idstring("XB1")) and managers.network.account:player_id() or ""
-	-- End Original Code --
 
 	-- Appears orginally, but is modified to include the num_player_slots parameter
 	local params = {
@@ -207,9 +206,8 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 		BigLobbyGlobals:num_player_slots()
 	}
 
-	new_peer:send("join_request_reply", unpack(params))
-
 	-- Original Code --
+	new_peer:send("join_request_reply", unpack(params))
 	new_peer:send("set_loading_state", false, data.session:load_counter())
 
 	if SystemInfo:platform() == Idstring("X360") or SystemInfo:platform() == Idstring("XB1") then

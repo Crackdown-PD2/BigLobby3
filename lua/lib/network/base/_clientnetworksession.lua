@@ -9,7 +9,7 @@ function ClientNetworkSession:on_join_request_reply(...)
 	-- Get params we want based on if the func signature is correct
 	local reply = params[1]
 	local sender = #params==19 and params[19] -- last param should now be 19
-	local num_players = sender and type(params[18])=='number' and params[18] -- param 16 should now be 18
+	local num_players = sender and params[18] -- param 16 should now be 18
 
 	-- If the response is `1`(ok), set BigLobby to use host preference or 4 if
 	-- a regular lobby (num_players param is falsey).
