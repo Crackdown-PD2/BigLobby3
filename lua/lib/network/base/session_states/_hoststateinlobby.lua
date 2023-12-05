@@ -163,7 +163,7 @@ function HostStateInLobby:on_join_request_received(data, peer_name, peer_account
 		return
 	end
 
-	local ticket = new_peer:create_ticket()
+	local ticket = new_peer:create_ticket(data.local_peer:account_id())
 
 	new_peer:set_entering_lobby(true)
 
