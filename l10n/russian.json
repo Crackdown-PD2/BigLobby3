@@ -1,0 +1,16 @@
+{
+	"bkin_bl__menu__title"            		: "BigLobby Настаройки",
+	"bkin_bl__menu__desc"             		: "Задать количество игроков для лобби у своего хоста.",
+	"bkin_bl__set_size__title"        		: "Задать максимальный размер лобби",
+	"bkin_bl__set_size__desc"         		: "Скольким игрокам ты хочешь позволять в своем лобби? (*)",
+	"bkin_bl__allow_more_bots__title" 		: "Позволить больше ботов в лобби",
+	"bkin_bl__allow_more_bots__desc"  		: "Забить ботами пустые места в лобби.",
+	"bkin_bl__set_num_bots__title"    		: "Максимум ботов",
+	"bkin_bl__set_num_bots__desc"     		: "Сколько ботов добавить в игру? (*)",
+	"bkin_bl__stop_all_bots__title"    		: "Остановить всех ботов",
+	"bkin_bl__stop_all_bots__desc"     		: "Запретить ходить ботам в стелсе (*)",
+	"bkin_bl__release_all_bots__title" 		: "Распустить ботов",
+	"bkin_bl__release_all_bots__desc"  		: "",
+	"bkin_bl__auto_stop_all_bots__title"    : "Автоматическая остановка всех ботов в стелсе",
+	"bkin_bl__auto_stop_all_bots__desc"     : "Даёт возможность автоматической остановки всех ботов в стелсе"
+}
