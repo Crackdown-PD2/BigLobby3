@@ -10,7 +10,7 @@ BigLobby__ConnectionNetworkHandler = BigLobby__ConnectionNetworkHandler or class
 -- The function is effectively the same, varargs(...) are used instead to support
 -- passing an extra param when in BigLobby mode.
 function BigLobby__ConnectionNetworkHandler:join_request_reply(...)
-	if not self._verify_in_client_session() then
+	if not self._verify_in_client_session() or not managers.network:session() or not managers.network:session().on_join_request_reply then
 		return
 	end
 
