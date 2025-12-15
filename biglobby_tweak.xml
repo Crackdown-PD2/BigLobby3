@@ -20,35 +20,34 @@
 
 			<message name="biglobby__join_request_reply" delivery="ordered" receiver="biglobby__connection">
 				<param type="int" min="0" max="15" />
-				<param type="int" min="0" max="128" /> <!-- Peer id ~=0 when accepted -->
-				<param type="string" />				<!-- My character -->
-				<param type="int" min="1" max="255" /> <!-- level index -->
-				<param type="int" min="1" max="8" /> <!-- difficulty index -->
-				<param type="bool" /> <!-- one down modifier -->
-				<param type="int" min="0" max="4" /> <!-- Game State ~=0 when accepted, lobby, in game etc -->
-				<param type="string" /> <!-- Server character (it was Mask set) -->
-				<param type="string" /> <!-- Steam User ID (used for pc only) -->
-				<param type="string" /> <!-- Mission -->
-				<param type="int" min="0" max="255" /> <!-- Job id index -->
-				<param type="int" min="0" max="12" /> <!-- Job stage -->
-				<param type="int" min="0" max="4" /> <!-- alternative stage -->
-				<param type="int" min="0" max="255" /> <!-- interupt stage level index -->
+				<param type="int" min="0" max="128" /> 		<!-- Peer id ~=0 when accepted -->
+				<param type="string" />						<!-- My character -->
+				<param type="int" min="1" max="255" /> 		<!-- level index -->
+				<param type="int" min="1" max="8" /> 		<!-- difficulty index -->
+				<param type="bool" /> 						<!-- one down modifier -->
+				<param type="int" min="0" max="4" /> 		<!-- Game State ~=0 when accepted, lobby, in game etc -->
+				<param type="string" /> 					<!-- Server character (it was Mask set) -->
+				<param type="string" /> 					<!-- Steam User ID (used for pc only) -->
+				<param type="string" /> 					<!-- Mission -->
+				<param type="int" min="0" max="255" /> 		<!-- Job id index -->
+				<param type="int" min="0" max="12" /> 		<!-- Job stage -->
+				<param type="int" min="0" max="4" /> 		<!-- alternative stage -->
+				<param type="int" min="0" max="255" /> 		<!-- interupt stage level index -->
 				<param type="xuid" />
-				<param type="longstring" /> <!-- Authentic Steam Ticket ID -->
 				<param type="int" min="4" max="128" /> <!-- BigLobby host `num_players` setting -->
 			</message>
 
 			<message name="biglobby__peer_handshake" delivery="ordered" receiver="biglobby__connection" check="server_to_client">
-				<param type="string" /> <!-- Peer Name -->
-				<param type="int" min="1" max="128" /> <!-- Peer id -->
-				<param type="string" /> <!-- Peer User_ID -->
-				<param type="string" /> <!-- Peer Account type -->
-				<param type="string" /> <!-- Peer Account Id -->
-				<param type="bool" /> <!-- In lobby -->
-				<param type="bool" /> <!-- Loading -->
-				<param type="bool" /> <!-- Synched -->
-				<param type="string" /> <!-- Character -->
-				<param type="string" /> <!-- Mask set -->
+				<param type="string" /> 				<!-- Peer Name -->
+				<param type="int" min="1" max="128" /> 	<!-- Peer id -->
+				<param type="string" /> 				<!-- Peer User_ID -->
+				<param type="string" /> 				<!-- Peer Account type -->
+				<param type="string" /> 				<!-- Peer Account Id -->
+				<param type="bool" /> 					<!-- In lobby -->
+				<param type="bool" /> 					<!-- Loading -->
+				<param type="bool" /> 					<!-- Synched -->
+				<param type="string" /> 				<!-- Character -->
+				<param type="string" /> 				<!-- Mask set -->
 				<param type="xuid" />
 				<param type="xnaddr" />
 			</message>
@@ -68,8 +67,8 @@
 			<message name="biglobby__set_member_ready" delivery="ordered" receiver="biglobby__connection">
 				<param type="int" min="1" max="128" /> <!-- Peer ID -->
 				<param type="int" min="0" max="100" /> <!-- state. 0 = false -->
-				<param type="int" min="1" max="4" />   <!-- 1=ready button_state, 2=streaming state, 3=outfits_loaded, 4=server asks if outfits_loaded-->
-				<param type="string" />                <!-- outfit_versions -->
+				<param type="int" min="1" max="4" /> <!-- 1=ready button_state, 2=streaming state, 3=outfits_loaded, 4=server asks if outfits_loaded-->
+				<param type="string" />	<!-- outfit_versions -->
 			</message>
 
 			<message name="biglobby__request_drop_in_pause" delivery="ordered" receiver="biglobby__connection" check="server_to_client">
@@ -124,7 +123,7 @@
 				<param type="int" min="0" max="16384" /> <!-- Damage -->
 				<param type="int" min="1" max="128" />   <!-- server_to_client: Peer ID | client_to_server: Player weapon selection index -->
 			</message>
-			
+
 			<message name="biglobby__sync_player_installed_mod" delivery="reliable" receiver="biglobby__connection">
 				<param type="int" min="0" max="128" />  <!-- Player -->
 				<param type="string" step="0.01" />     <!-- Mod id -->
@@ -151,7 +150,7 @@
 				<param type="bool" />                   <!-- create body bag -->
 				<param type="int" min="1" max="128" />  <!-- peer_id -->
 			</message>
-			
+
 			<message name="biglobby__mission_ended" delivery="ordered" receiver="biglobby__unit" check="server_to_client">
 				<param type="bool" />	<!-- win -->
 				<param type="int" min="0" max="128" /> <!-- num_is_inside -->
